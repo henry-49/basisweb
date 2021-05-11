@@ -11,4 +11,6 @@ class ContactController extends Controller
         return view('contact');
         // echo "This is a Test";
     }
+
+ 
 }
