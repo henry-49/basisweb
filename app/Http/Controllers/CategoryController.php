@@ -14,9 +14,9 @@ class CategoryController extends Controller
     //
     public function AllCat()
     {
-        // $categories = Category::latest()->paginate(5);
+        $categories = Category::latest()->paginate(5);
             // Query Builder
-        $categories = DB::table('categories')->latest()->paginate(5);
+        // $categories = DB::table('categories')->latest()->paginate(5);
         return view('admin.category.index', compact('categories'));
     }
 
