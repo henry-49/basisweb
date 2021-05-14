@@ -23,10 +23,11 @@ class CategoryController extends Controller
 
             //Eloquent ORM
         $categories = Category::latest()->paginate(5);
+        $trashCat = Category::onlyTrashed()->latest()->paginate(3);
 
             // Query Builder
         // $categories = DB::table('categories')->latest()->paginate(5);
-        return view('admin.category.index', compact('categories'));
+        return view('admin.category.index', compact('categories', 'trashCat'));
     }
 
 
@@ -90,5 +91,15 @@ class CategoryController extends Controller
     DB::table('categories')->where('id', $id)->update($data);
 
       return Redirect()->route('all.category')->with('success', 'Category Updated Successfuly');
+    }
+
+
+    // method to delete category
+    public function SoftDeleteCat($id)
+    {
+        // find selected id and delete
+       $delete = Category::find($id)->delete();
+
+       return Redirect()->route('all.category')->with('success', 'Category SoftDeleted Successfuly');
     }
 }
