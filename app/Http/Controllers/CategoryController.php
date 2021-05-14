@@ -16,12 +16,14 @@ class CategoryController extends Controller
     {
 
         // Query Builder
-        $categories = DB::table('categories')
-                ->join('users', 'categories.user_id', 'users.id')
-                ->select('categories.*', 'users.name')
-                ->latest()->paginate(5);
+        // $categories = DB::table('categories')
+        //         ->join('users', 'categories.user_id', 'users.id')
+        //         ->select('categories.*', 'users.name')
+        //         ->latest()->paginate(5);
 
-        // $categories = Category::latest()->paginate(5);
+            //Eloquent ORM
+        $categories = Category::latest()->paginate(5);
+
             // Query Builder
         // $categories = DB::table('categories')->latest()->paginate(5);
         return view('admin.category.index', compact('categories'));
@@ -58,5 +60,28 @@ class CategoryController extends Controller
         DB::table('categories')->insert($data);
 
         return Redirect()->back()->with('success', 'Category Inserted Successfuly');
+    }
+
+
+
+    // method to edit category
+    public function EditCat($id)
+    {
+        // find catagory by id
+      $categories = Category::find($id);
+      // Parse data to view
+      return view('admin.category.edit', compact('categories'));
+    }
+
+    //method to update category
+    public function UpdateCat(Request $request, $id)
+    {
+          // find catagory by id
+      $update = Category::find($id)->update([
+          'category_name' => $request->category_name,
+          'user_id' => Auth::user()->id,
+      ]);
+
+      return Redirect()->route('all.category')->with('success', 'Category Updated Successfuly');
     }
 }
