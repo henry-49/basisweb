@@ -102,4 +102,14 @@ class CategoryController extends Controller
 
        return Redirect()->route('all.category')->with('success', 'Category SoftDeleted Successfuly');
     }
+
+
+    // method to restore softdeleted category
+    public function RestoreCat($id)
+    {
+        // restore the selected id
+        $restoreDelete = Category::withTrashed()->find($id)->restore();
+
+        return Redirect()->route('all.category')->with('success', 'Category Restore Successfuly');
+    }
 }
