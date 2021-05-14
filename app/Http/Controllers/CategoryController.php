@@ -68,7 +68,9 @@ class CategoryController extends Controller
     public function EditCat($id)
     {
         // find catagory by id
-      $categories = Category::find($id);
+    //   $categories = Category::find($id);
+    $categories = DB::table('categories')->where('id', $id)->first();
+
       // Parse data to view
       return view('admin.category.edit', compact('categories'));
     }
@@ -77,10 +79,15 @@ class CategoryController extends Controller
     public function UpdateCat(Request $request, $id)
     {
           // find catagory by id
-      $update = Category::find($id)->update([
-          'category_name' => $request->category_name,
-          'user_id' => Auth::user()->id,
-      ]);
+    //   $update = Category::find($id)->update([
+    //       'category_name' => $request->category_name,
+    //       'user_id' => Auth::user()->id,
+    //   ]);
+
+    $data = array();
+    $data['category_name'] = $request->category_name;
+    $data['user_id'] = Auth::user()->id;
+    DB::table('categories')->where('id', $id)->update($data);
 
       return Redirect()->route('all.category')->with('success', 'Category Updated Successfuly');
     }
