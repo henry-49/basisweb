@@ -65,7 +65,7 @@
 
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-header">Category Name</div>
+                    <div class="card-header">Add Category</div>
             <div class="card-body">
 
                     <form action="{{ route('store.category') }}" method="POST">
