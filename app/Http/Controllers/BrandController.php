@@ -67,9 +67,21 @@ class BrandController extends Controller
 
         return Redirect()->route('all.brand')->with('success', 'Brand Inserted Successfuly');
 
-    }else{
-        return Redirect()->route('all.brand')->with('error', 'Opps Something went Wrong!');
-    }
+        }else{
+            return Redirect()->route('all.brand')->with('error', 'Opps Something went Wrong!');
+        }
 
     }
+
+
+
+    public function EditBrand($id)
+    {
+        $brands = Brand::find($id);
+        // $brands = DB::table('brands')->where('id', $id)->first();
+      // Parse data to view
+      return view('admin.brand.edit', compact('brands'));
+    }
+
+   
 }
