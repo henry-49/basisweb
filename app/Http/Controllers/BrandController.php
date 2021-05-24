@@ -11,7 +11,7 @@ use Image;
 
 class BrandController extends Controller
 {
-    //
+    //method to show all brand with pagination
     public function AllBrand()
     {
         $brands = Brand::latest()->paginate(5);
@@ -19,6 +19,7 @@ class BrandController extends Controller
     }
 
 
+    // method to create brand
     public function StoreBrand(Request $request)
     {
             // Validate input
@@ -70,7 +71,7 @@ class BrandController extends Controller
     }
 
 
-
+    // method to edit brand
     public function Edit($id)
     {
         $brands = Brand::find($id);
@@ -80,6 +81,7 @@ class BrandController extends Controller
     }
 
    
+    // Method to update brand
     public function Update(Request $request, $id)
     {
         $validatedData = $request->validate([
@@ -138,6 +140,21 @@ class BrandController extends Controller
     }
 
 
+    // method to delete brand
+    public function Delete($id)
+    {
+         // find the image
+         $image = Brand::find($id);
+         $old_image = $image->brand_image;
+         // unlink: deletes the image
+         unlink($old_image);
+ 
+ 
+        // Using Eloquent ORM to Delete Brand
+        Brand::find($id)->delete();
+        
+        return Redirect()->back()->with('success', 'Brand Deleted Successfuly');
+    }
 
 
 }
