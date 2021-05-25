@@ -36,26 +36,26 @@ class BrandController extends Controller
     $brand_image = $request->file('brand_image'); 
 
     // generate unique id for uploaded brand image
-    $gen_name_id = hexdec(uniqid());
+    // $gen_name_id = hexdec(uniqid());
 
     // get image extension jpg, jpeg, png 
-    $img_ext = strtolower($brand_image->getClientOriginalExtension());
+    // $img_ext = strtolower($brand_image->getClientOriginalExtension());
      
     // concatinate the generated id and extension eg: 53436335.jpg
-    $img_name = $gen_name_id.'.'.$img_ext;
+    // $img_name = $gen_name_id.'.'.$img_ext;
 
     // location to be uploaded
-    $up_location = 'image/brand/';
-    $last_img = $up_location.$img_name;
-    $brand_image->move($up_location,$last_img);
+    // $up_location = 'image/brand/';
+    // $last_img = $up_location.$img_name;
+    // $brand_image->move($up_location,$last_img);
 
 
-     // generate unique id for uploaded image
-    //  $gen_name_id = hexdec(uniqid()). '.'. $brand_image->getClientOriginalExtension();
-     // Using image intervention to resize and save in the specified location with the id
-    //  Image::make($brand_image)->resize(300,200)->save('image/brand/'.$gen_name_id);
-     // save uploaded image
-    //  $last_img = 'image/brand/'.$gen_name_id;
+    // generate unique id for uploaded image
+     $gen_name_id = hexdec(uniqid()). '.'. $brand_image->getClientOriginalExtension();
+    // Using image intervention to resize and save in the specified location with the id
+     Image::make($brand_image)->resize(300,200)->save('image/brand/'.$gen_name_id);
+    // save uploaded image
+     $last_img = 'image/brand/'.$gen_name_id;
 
 
     // Using Eloquent ORM Insert Data
@@ -98,7 +98,7 @@ class BrandController extends Controller
             // store uploaded image in $brand_image
             $brand_image = $request->file('brand_image'); 
                 if($brand_image){
-                    // generate unique id for uploaded brand image
+            // generate unique id for uploaded brand image
             $gen_name_id = hexdec(uniqid());
 
             // get image extension jpg, jpeg, png 
@@ -152,7 +152,7 @@ class BrandController extends Controller
  
         // Using Eloquent ORM to Delete Brand
         Brand::find($id)->delete();
-        
+
         return Redirect()->back()->with('success', 'Brand Deleted Successfuly');
     }
 
