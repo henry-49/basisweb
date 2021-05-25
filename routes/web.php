@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\MultipicController;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
@@ -56,6 +57,11 @@ Route::post('/brand/add', [BrandController::class, 'StoreBrand'])->name('store.b
 Route::get('/brand/edit/{id}', [BrandController::class, 'Edit']);
 Route::post('/brand/update/{id}', [BrandController::class, 'Update']);
 Route::get('/brand/delete/{id}', [BrandController::class, 'Delete']);
+
+
+// Multi Image Route
+Route::get('/multi/image', [MultipicController::class, 'Multipic'])->name('multi.image');
+Route::post('/multi/add', [MultipicController::class, 'StoreMultiImage'])->name('store.image');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
