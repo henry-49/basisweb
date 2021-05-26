@@ -19,6 +19,13 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
+// route to verify user email after registration
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
