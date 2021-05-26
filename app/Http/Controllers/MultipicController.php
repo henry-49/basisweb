@@ -11,7 +11,13 @@ use Image;
 
 class MultipicController extends Controller
 {
-    //
+
+      // redirect user to login when trying to access url without login
+      public function __construct(){
+        $this->middleware('auth');
+    }
+
+    //show all multi pics
     public function Multipic()
     {
         $images = Multipic::all();

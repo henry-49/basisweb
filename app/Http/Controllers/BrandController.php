@@ -11,6 +11,12 @@ use Image;
 
 class BrandController extends Controller
 {
+
+      // redirect user to login when trying to access url without login
+      public function __construct(){
+        $this->middleware('auth');
+    }
+
     //method to show all brand with pagination
     public function AllBrand()
     {

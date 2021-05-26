@@ -11,7 +11,12 @@ use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
-    //
+    // redirect user to login when trying to access url without login
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
+    // show all categories
     public function AllCat()
     {
 
