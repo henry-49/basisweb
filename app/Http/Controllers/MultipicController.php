@@ -54,4 +54,21 @@ class MultipicController extends Controller
         return Redirect()->route('multi.image')->with('success', 'Multi Image Inserted Successfuly');
     
     }
+
+
+     // method to delete Image
+     public function Delete($id)
+     {
+          // find the image
+          $multi_image = Multipic::find($id);
+          $old_image = $multi_image->image;
+          // unlink: deletes the image
+          unlink($old_image);
+  
+  
+         // Using Eloquent ORM to Delete Image
+         Multipic::find($id)->delete();
+ 
+         return Redirect()->back()->with('success', 'Image Deleted Successfuly');
+     }
 }

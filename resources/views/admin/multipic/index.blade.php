@@ -20,6 +20,7 @@
                         <div class="card-body">
                             <img src="{{ asset($image->image) }}" alt="">
                         </div>
+                        <a href="{{ url('multi/delete/'.$image->id)}}" onclick="return confirm('Are you sure to delete')" class="btn btn-danger">X</a>
                     </div>
                     @endforeach
      
