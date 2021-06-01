@@ -74,7 +74,12 @@ Route::get('/multi/delete/{id}', [MultipicController::class, 'Delete']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // $users = User::all(); // Eloqaunt ORM
-    $users = DB::table('users')->get(); // Query Builder
+    // $users = DB::table('users')->get(); // Query Builder
 
-    return view('dashboard', compact('users'));
+    return view('admin.index');
+    // return view('dashboard', compact('users'));
 })->name('dashboard');
+
+
+// Logut Route
+Route::get('/user/logout', [BrandController::class, 'Logout'])->name('user.logout');
