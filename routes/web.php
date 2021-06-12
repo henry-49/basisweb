@@ -5,7 +5,11 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\MultipicController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\PortfolioController;
 use App\Models\User;
+use App\Models\Multipic;
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -27,7 +31,13 @@ Route::get('/email/verify', function () {
 
 
 Route::get('/', function () {
-    return view('welcome');
+
+    // return view('welcome');
+    // Displays in Frontend
+    $brands = DB::table('brands')->get();
+    $abouts = DB::table('home_abouts')->first();
+    $multipics = Multipic::all();
+     return view('home', compact('brands','abouts','multipics'));
 });
 
 Route::get('/home', function () {
@@ -70,6 +80,30 @@ Route::get('/brand/delete/{id}', [BrandController::class, 'Delete']);
 Route::get('/multi/image', [MultipicController::class, 'Multipic'])->name('multi.image');
 Route::post('/multi/add', [MultipicController::class, 'StoreMultiImage'])->name('store.image');
 Route::get('/multi/delete/{id}', [MultipicController::class, 'Delete']);
+
+
+// Admin All Route
+Route::get('/home/slider', [HomeController::class, 'HomeSlider'])->name('home.slider');
+Route::get('/add/slider', [HomeController::class, 'AddSlider'])->name('add.slider');
+Route::post('/store/slider', [HomeController::class, 'StoreSlider'])->name('store.slider');
+Route::get('/edit/slider/{id}', [HomeController::class, 'Edit']);
+Route::post('/update/slider/{id}', [HomeController::class, 'Update']);
+Route::get('/delete/slider/{id}', [HomeController::class, 'SliderDelete']);
+
+
+
+
+// Home About Routes
+Route::get('/home/about', [AboutController::class, 'HomeAbout'])->name('home.about');
+Route::get('/add/about', [AboutController::class, 'AddAbout'])->name('add.about');
+Route::post('/store/about', [AboutController::class, 'StoreAbout'])->name('store.about');
+Route::get('/edit/about/{id}', [AboutController::class, 'Edit']);
+Route::post('/update/about/{id}', [AboutController::class, 'Update']);
+Route::get('/delete/about/{id}', [AboutController::class, 'AboutDelete']);
+
+
+// Admin Portfolio Route
+Route::get('/portfolio', [PortfolioController::class, 'Portfolio'])->name('portfolio');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

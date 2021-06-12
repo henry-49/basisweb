@@ -106,7 +106,7 @@
         </div>
       </div>
       <div class="copyright pl-0">
-        <p class="text-center">&copy; 2021 Copyright TZNH 
+        <p class="text-center">&copy; 2021 Copyright
           <a class="text-primary" href="http://www.thewebgorilla.com" target="_blank">TZNH</a>.
         </p>
       </div>
