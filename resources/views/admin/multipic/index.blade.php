@@ -1,10 +1,8 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+@extends('admin.admin_master')
 
-           Multi Image <b></b>
-        </h2>
-    </x-slot>
+<!--  Setting the  ID as section admin  -->
+@section('admin')
+
 
     <div class="py-12">
  
@@ -16,8 +14,8 @@
                 <div class="card-group">
              
                     @foreach($images as $image)
-                    <div class="col-md-4 mt-5">
-                        <div class="card-body">
+                    <div class="col-md-4 mt-4">
+                        <div class="card">
                             <img src="{{ asset($image->image) }}" alt="">
                         </div>
                         <a href="{{ url('multi/delete/'.$image->id)}}" onclick="return confirm('Are you sure to delete')" class="btn btn-danger">X</a>
@@ -60,4 +58,5 @@
 
 
     </div>
-</x-app-layout>
+
+@endsection
