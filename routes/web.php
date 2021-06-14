@@ -106,6 +106,22 @@ Route::get('/delete/about/{id}', [AboutController::class, 'AboutDelete']);
 Route::get('/portfolio', [PortfolioController::class, 'Portfolio'])->name('portfolio');
 
 
+// Admin Contact Page Routes
+Route::get('/admin/contact', [ContactController::class, 'AdminContact'])->name('admin.contact');
+Route::get('/add/contact', [ContactController::class, 'AddContact'])->name('add.contact');
+Route::post('/store/contact', [ContactController::class, 'StoreContact'])->name('store.contact');
+Route::get('/edit/contact/{id}', [ContactController::class, 'EditContact']);
+Route::post('/update/contact/{id}', [ContactController::class, 'UpdateContact']);
+Route::get('/delete/contact/{id}', [ContactController::class, 'DeleteContact']);
+Route::get('/add/message', [ContactController::class, 'AdminMessage'])->name('admin.message');
+Route::get('/delete/message/{id}', [ContactController::class, 'DeleteAdminMessage']);
+
+
+// Frontend Contact Page Routes
+Route::get('/contact', [ContactController::class, 'Contact'])->name('contact');
+Route::post('/contact/form', [ContactController::class, 'ContactForm'])->name('contact.form');// Frontend Contact Page Routes
+
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // $users = User::all(); // Eloqaunt ORM
     // $users = DB::table('users')->get(); // Query Builder
