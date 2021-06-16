@@ -71,7 +71,14 @@ class BrandController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-        return Redirect()->route('all.brand')->with('success', 'Brand Inserted Successfuly');
+        $notification = array(
+            'message' => 'Brand Inserted Successfully',
+            'alert-type' => 'success'
+        );
+        
+        return Redirect()->back()->with($notification);
+
+        // return Redirect()->route('all.brand')->with('success', 'Brand Inserted Successfuly');
 
 
     }
@@ -129,7 +136,12 @@ class BrandController extends Controller
                 'created_at' => Carbon::now()
             ]);
 
-            return Redirect()->back()->with('success', 'Brand Updated Successfuly');
+            $notification = array(
+                'message' => 'Brand Updated Successfully',
+                'alert-type' => 'success'
+            );
+
+            return Redirect()->back()->with($notification);
 
             }else{
 
@@ -139,7 +151,9 @@ class BrandController extends Controller
                 'created_at' => Carbon::now()
             ]);
 
-            return Redirect()->back()->with('success', 'Brand Updated Successfuly');
+            return Redirect()->back()->with($notification);
+            // return Redirect()->back()->with('success', 'Brand Updated Successfully');
+            
             }
         
         
@@ -159,7 +173,15 @@ class BrandController extends Controller
         // Using Eloquent ORM to Delete Brand
         Brand::find($id)->delete();
 
-        return Redirect()->back()->with('success', 'Brand Deleted Successfuly');
+        //  Using Toastr Js
+        $notification = array(
+            'message' => 'Brand Deleted Successfully',
+            'alert-type' => 'warning'
+        );
+
+        return Redirect()->back()->with($notification);
+
+        // return Redirect()->back()->with('success', 'Brand Deleted Successfully');
     }
 
 
@@ -167,8 +189,13 @@ class BrandController extends Controller
     public function Logout(){
         Auth::logout();
 
+         // Using Toastr Js
+         $notification = array(
+            'message' => 'You Have Successfully Logout ',
+            'alert-type' => 'success'
+        );
 
         // redirect to login page
-        return Redirect()->route('login')->with('success', 'You Have successfuly logout');
+        return Redirect()->route('login')->with($notification);
     }
 }

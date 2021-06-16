@@ -65,7 +65,13 @@ class CategoryController extends Controller
         $data['user_id'] = Auth::user()->id;
         DB::table('categories')->insert($data);
 
-        return Redirect()->back()->with('success', 'Category Inserted Successfuly');
+          // Using Toastr Js
+          $notification = array(
+            'message' => 'Category Inserted Successfuly',
+            'alert-type' => 'success'
+        );
+
+        return Redirect()->back()->with($notification);
     }
 
 
@@ -95,7 +101,14 @@ class CategoryController extends Controller
     $data['user_id'] = Auth::user()->id;
     DB::table('categories')->where('id', $id)->update($data);
 
-      return Redirect()->route('all.category')->with('success', 'Category Updated Successfuly');
+       // Using Toastr Js
+       $notification = array(
+        'message' => 'Category Updated Successfully',
+        'alert-type' => 'success'
+    );
+
+
+      return Redirect()->route('all.category')->with($notification);
     }
 
 
@@ -105,7 +118,13 @@ class CategoryController extends Controller
         // find selected id and delete
        $delete = Category::find($id)->delete();
 
-       return Redirect()->route('all.category')->with('success', 'Category SoftDeleted Successfuly');
+           // Using Toastr Js
+           $notification = array(
+            'message' => 'Category SoftDeleted Successfuly',
+            'alert-type' => 'info'
+        );
+
+       return Redirect()->route('all.category')->with($notification);
     }
 
 
@@ -115,7 +134,13 @@ class CategoryController extends Controller
         // restore the selected id
         $restoreDelete = Category::withTrashed()->find($id)->restore();
 
-        return Redirect()->route('all.category')->with('success', 'Category Restore Successfuly');
+              // Using Toastr Js
+              $notification = array(
+                'message' => 'Category Restore Successfully',
+                'alert-type' => 'success'
+            );
+
+        return Redirect()->route('all.category')->with($notification);
     }
 
 
@@ -124,6 +149,12 @@ class CategoryController extends Controller
     {
         $pdelete = Category::onlyTrashed()->find($id)->forceDelete();
 
-        return Redirect()->back()->with('success', 'Category Delete Parmanently');
+           // Using Toastr Js
+           $notification = array(
+            'message' => 'Category Delete Parmanently',
+            'alert-type' => 'success'
+        );
+
+        return Redirect()->back()->with($notification);
     }
 }
