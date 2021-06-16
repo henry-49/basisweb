@@ -10,6 +10,12 @@ use Auth;
 
 class AboutController extends Controller
 {
+    public function About()
+    {
+        $about_page = DB::table('home_abouts')->first();
+        return view('pages.about', compact('about_page'));
+    }
+
      //Method to get about
      public function HomeAbout()
      {

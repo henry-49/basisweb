@@ -8,6 +8,7 @@ use App\Http\Controllers\MultipicController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\ChangePassController;
 use App\Models\User;
 use App\Models\Multipic;
 use Illuminate\Support\Facades\DB;
@@ -44,9 +45,9 @@ Route::get('/home', function () {
     echo "This is a test for middleware!";
 });
 
-Route::get('/about', function () {
-    return view('about');
-});
+// Route::get('/about', function () {
+//     return view('about');
+// });
 
 
 //Laravel 7 and 6
@@ -119,7 +120,20 @@ Route::get('/delete/message/{id}', [ContactController::class, 'DeleteAdminMessag
 
 // Frontend Contact Page Routes
 Route::get('/contact', [ContactController::class, 'Contact'])->name('contact');
-Route::post('/contact/form', [ContactController::class, 'ContactForm'])->name('contact.form');// Frontend Contact Page Routes
+Route::post('/contact/form', [ContactController::class, 'ContactForm'])->name('contact.form');
+
+
+Route::get('/about', [AboutController::class, 'About'])->name('about');
+
+
+// Change Password and User Profile Routes
+Route::get('/user/password', [ChangePassController::class, 'ChangePass'])->name('change.password');
+Route::post('/update/password', [ChangePassController::class, 'UpdatePass'])->name('update.password');
+
+
+//User Profile Route
+Route::get('/user/profile', [ChangePassController::class, 'UpdateProfile'])->name('update.profile');
+Route::post('/user/profile/update', [ChangePassController::class, 'UpdateUserProfile'])->name('update.user.profile');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

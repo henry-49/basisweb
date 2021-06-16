@@ -9,12 +9,12 @@
         <ul>
           <li class="active"><a href="{{url('/')}}">Home</a></li>
 
-          <li class="drop-down"><a href="#">About</a>
+          <li class="drop-down"><a href="{{ route('about') }}">About</a>
             <ul>
-              <li><a href="">About Us</a></li>
+              <li><a href="{{ route('about') }}">About Us</a></li>
               <li><a href="team.html">Team</a></li>
               <li><a href="testimonials.html">Testimonials</a></li>
-              <li class="drop-down"><a href="#">Deep Drop Down</a>
+              <!-- <li class="drop-down"><a href="#">Deep Drop Down</a>
                 <ul>
                   <li><a href="#">Deep Drop Down 1</a></li>
                   <li><a href="#">Deep Drop Down 2</a></li>
@@ -22,13 +22,13 @@
                   <li><a href="#">Deep Drop Down 4</a></li>
                   <li><a href="#">Deep Drop Down 5</a></li>
                 </ul>
-              </li>
+              </li> -->
             </ul>
           </li>
 
           <li><a href="services.html">Services</a></li>
           <li><a href="{{ route('portfolio') }}">Portfolio</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
+          <!-- <li><a href="pricing.html">Pricing</a></li> -->
           <li><a href="blog.html">Blog</a></li>
           <li><a href="{{ route('contact') }}">Contact</a></li>
 
@@ -36,10 +36,10 @@
       </nav><!-- .nav-menu -->
 
       <div class="header-social-links">
-        <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
+        <a href="https://twitter.com/henrysmith5" class="twitter"><i class="icofont-twitter"></i></a>
         <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
         <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+        <a href="https://www.linkedin.com/in/henry-nwadiogor-744026a8/" class="linkedin"><i class="icofont-linkedin"></i></i></a>
       </div>
 
     </div>

@@ -44,8 +44,8 @@
                         
                           
         <li  class="active" >
-          <a class="sidenav-item-link" href="index.html">
-            <span class="nav-text">Ecommerce</span>
+          <a class="sidenav-item-link" href="{{ route('all.category') }}">
+            <span class="nav-text">Category</span>
             
           </a>
         </li>

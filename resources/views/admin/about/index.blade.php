@@ -1,5 +1,5 @@
 
-    @extends('admin.admin_master')
+@extends('admin.admin_master')
 
 <!--  Setting the  ID as section admin  -->
 @section('admin')

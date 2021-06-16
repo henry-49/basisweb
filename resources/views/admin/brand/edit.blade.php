@@ -1,4 +1,8 @@
-<x-app-layout>
+@extends('admin.admin_master')
+
+<!--  Setting the  ID as section admin  -->
+@section('admin')
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
 
@@ -18,7 +22,7 @@
        <div class="container">
            <div class="row">
 
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">Edit Brand</div>
             <div class="card-body">
@@ -65,4 +69,4 @@
            </div>
        </div>
     </div>
-</x-app-layout>
+@endsection

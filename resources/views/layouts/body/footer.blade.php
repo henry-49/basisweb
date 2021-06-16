@@ -7,8 +7,8 @@
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3>TZNH</h3>
             <p>
-              Enger Street <br>
-              Duesseldorf, 40470<br>
+              Enger Street 2<br>
+              Duesseldorf, 40235<br>
               Germany <br><br>
               <strong>Phone:</strong> +49 5589 588 55<br>
               <strong>Email:</strong> info@thewebgorilla.com<br>
@@ -18,7 +18,7 @@
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/') }}">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
@@ -64,11 +64,11 @@
         </div>
       </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="https://twitter.com/henrysmith5" class="twitter"><i class="bx bxl-twitter"></i></a>
         <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
         <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
         <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        <a href="https://www.linkedin.com/in/henry-nwadiogor-744026a8/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
     </div>
   </footer>
